@@ -16,10 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Label("Score", systemImage: "score.circle")
-                .padding()
-                .bold()
-            Text(scoreViewModel.currentScore)
+            ScoreView(scoreViewModel: scoreViewModel)
             
             Label("Question", systemImage: "questionmark.circle")
                 .padding()
@@ -39,21 +36,24 @@ struct ContentView: View {
                     }
                 }
             
-            Spacer()
-            
-            Button("Show Answer") {
-                if viewModel.showAnswer == false {
-                    viewModel.toggleAnswer()
+            HStack {
+                Button("Show Answer") {
+                    if viewModel.showAnswer == false {
+                        viewModel.toggleAnswer()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            viewModel.showNextQuestion()
+                            userInput = ""
+                        }
+                    }
+                }
+                
+                if viewModel.showAnswer {
+                    Text(viewModel.currentQuestion.answer)
                 }
             }
-
-            if viewModel.showAnswer {
-                Text(viewModel.currentQuestion.answer)
-            }
             
-            Spacer()
             
-            Button("Show Next Question") {
+            Button("Skip") {
                 viewModel.showNextQuestion()
                 userInput = ""
             }

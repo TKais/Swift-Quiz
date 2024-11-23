@@ -9,17 +9,17 @@ import Foundation
 import SwiftUI
 
 class ScoreViewModel: ObservableObject {
-    @Published var score: Score = Score(score: 0)
+    @Published var score: Score = Score(value: 0)
     
     var currentScore:String {
-        return String(score.score)
+        return String(score.value)
     }
     
     func incrementScore() {
-        score.score += 1
+        score.value += 1
     }
     
     func resetScore() {
-        score.score = 0
+        score.value = 0
     }
 }

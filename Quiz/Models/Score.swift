@@ -6,5 +6,5 @@
 //
 
 struct Score {
-    var score: Int
+    var value: Int
 }

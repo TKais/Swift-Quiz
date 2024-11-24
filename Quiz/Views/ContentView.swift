@@ -42,6 +42,7 @@ struct ContentView: View {
                     validationResult = validator.validateTextField(userInput, answer: viewModel.currentQuestion.answer)
                     
                     if validationResult == "" {
+                        isValid = true
                         scoreViewModel.incrementScore()
                         
                         confettiCounter += 1

@@ -31,7 +31,8 @@ struct ValidationUtils {
     }
     
     func containsNonAlphanumericCharacters(_ string: String) -> Bool {
-        // Check if any character in the string is not alphanumeric
-        return string.rangeOfCharacter(from: CharacterSet.alphanumerics.inverted) != nil
+        let allowedCharacters = CharacterSet.alphanumerics.union(.whitespaces)
+        return string.rangeOfCharacter(from: allowedCharacters.inverted) != nil
+
     }
 }

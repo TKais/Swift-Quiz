@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = QuestionViewModel()
@@ -13,6 +14,8 @@ struct ContentView: View {
     @StateObject private var scoreViewModel = ScoreViewModel()
     
     @State private var userInput:String = ""
+    
+    @State private var confettiCounter = 0
     
     var body: some View {
         VStack {
@@ -33,8 +36,12 @@ struct ContentView: View {
                     if viewModel.validateAnswer(input: userInput) {
                         scoreViewModel.incrementScore()
                         
+                        confettiCounter += 1
+                        userInput = ""
+                        viewModel.showNextQuestion()
                     }
                 }
+            ConfettiCannon(counter: $confettiCounter, num: 30, colors: [.red, .blue, .green], confettiSize: 15)
             
             HStack {
                 Button("Show Answer") {

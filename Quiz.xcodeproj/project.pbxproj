@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9092AB822CF29F43005CF269 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9092AB812CF29F43005CF269 /* ConfettiSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9092AB4E2CF23E8C005CF269 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9092AB822CF29F43005CF269 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = Quiz;
 			packageProductDependencies = (
+				9092AB812CF29F43005CF269 /* ConfettiSwiftUI */,
 			);
 			productName = Quiz;
 			productReference = 9092AB3D2CF23E8A005CF269 /* Quiz.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 9092AB342CF23E8A005CF269;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9092AB802CF29EF1005CF269 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9092AB3E2CF23E8A005CF269 /* Products */;
 			projectDirPath = "";
@@ -552,6 +561,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9092AB802CF29EF1005CF269 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9092AB812CF29F43005CF269 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9092AB352CF23E8A005CF269 /* Project object */;
 }

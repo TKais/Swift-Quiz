@@ -36,9 +36,4 @@ class QuestionViewModel: ObservableObject {
     func toggleAnswer() {
         showAnswer.toggle()
     }
-    
-    func validateAnswer(input: String) -> Bool {
-        return input == currentQuestion.answer
-    }
-    
 }

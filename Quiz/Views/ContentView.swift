@@ -17,6 +17,12 @@ struct ContentView: View {
     
     @State private var confettiCounter = 0
     
+    @State private var isValid = true
+    
+    @State private var validationResult = ""
+    
+    let validator = ValidationUtils()
+    
     var body: some View {
         VStack {
             ScoreView(scoreViewModel: scoreViewModel)
@@ -30,15 +36,19 @@ struct ContentView: View {
                     "Enter answer",
                     text: $userInput
                 )
-                .border(Color.black, width: 0.5)
+            .border((isValid ? Color.black : Color.red), width: (isValid ? 0.5 : 2))
                 .padding()
                 .onSubmit {
-                    if viewModel.validateAnswer(input: userInput) {
+                    validationResult = validator.validateTextField(userInput, answer: viewModel.currentQuestion.answer)
+                    
+                    if validationResult == "" {
                         scoreViewModel.incrementScore()
                         
                         confettiCounter += 1
                         userInput = ""
                         viewModel.showNextQuestion()
+                    } else {
+                        isValid = false
                     }
                 }
             ConfettiCannon(counter: $confettiCounter, num: 30, colors: [.red, .blue, .green], confettiSize: 15)
@@ -63,6 +73,14 @@ struct ContentView: View {
             Button("Skip") {
                 viewModel.showNextQuestion()
                 userInput = ""
+            }
+            
+            Spacer()
+            
+            if !isValid {
+                Text(validationResult)
+                    .font(.subheadline)
+                    .foregroundStyle(.red)
             }
             
             Spacer()

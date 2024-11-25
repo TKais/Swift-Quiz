@@ -15,7 +15,7 @@ class QuestionViewModel: ObservableObject {
         Question(text: "What is the smallest country in the world?", answer: "Antarctica"),
         Question(text: "What is the longest river in the world?", answer: "Amazon"),
         Question(text: "What is the largest ocean in the world?", answer: "Pacific"),
-        Question(text: "What is the smallest ocean in the world?", answer: "Atlantic"),
+        Question(text: "What is the smallest ocean in the world?", answer: "Arctic"),
         Question(text: "What is the largest desert in the world?", answer: "Sahara"),
         Question(text: "What is the smallest desert in the world?", answer: "Atacama"),
     ]

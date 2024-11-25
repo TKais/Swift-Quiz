@@ -9,7 +9,7 @@ import SwiftUI
 import ConfettiSwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = QuestionViewModel()
+    @StateObject private var questionViewModel = QuestionViewModel()
     
     @StateObject private var scoreViewModel = ScoreViewModel()
     
@@ -30,7 +30,7 @@ struct ContentView: View {
             Label("Question", systemImage: "questionmark.circle")
                 .padding()
                 .bold()
-            Text(viewModel.currentQuestion.text)
+            Text(questionViewModel.currentQuestion.text)
             
             TextField(
                     "Enter answer",
@@ -39,7 +39,7 @@ struct ContentView: View {
             .border((isValid ? Color.black : Color.red), width: (isValid ? 0.5 : 2))
                 .padding()
                 .onSubmit {
-                    validationResult = validator.validateTextField(userInput, answer: viewModel.currentQuestion.answer)
+                    validationResult = validator.validateTextField(userInput, answer: questionViewModel.currentQuestion.answer)
                     
                     if validationResult == "" {
                         isValid = true
@@ -47,7 +47,7 @@ struct ContentView: View {
                         
                         confettiCounter += 1
                         userInput = ""
-                        viewModel.showNextQuestion()
+                        questionViewModel.showNextQuestion()
                     } else {
                         isValid = false
                     }
@@ -56,23 +56,23 @@ struct ContentView: View {
             
             HStack {
                 Button("Show Answer") {
-                    if viewModel.showAnswer == false {
-                        viewModel.toggleAnswer()
+                    if questionViewModel.showAnswer == false {
+                        questionViewModel.toggleAnswer()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            viewModel.showNextQuestion()
+                            questionViewModel.showNextQuestion()
                             userInput = ""
                         }
                     }
                 }
                 
-                if viewModel.showAnswer {
-                    Text(viewModel.currentQuestion.answer)
+                if questionViewModel.showAnswer {
+                    Text(questionViewModel.currentQuestion.answer)
                 }
             }
             
             
             Button("Skip") {
-                viewModel.showNextQuestion()
+                questionViewModel.showNextQuestion()
                 userInput = ""
             }
             

@@ -56,17 +56,11 @@ struct ContentView: View {
             
             HStack {
                 Button("Show Answer") {
-                    if questionViewModel.showAnswer == false {
-                        questionViewModel.toggleAnswer()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            questionViewModel.showNextQuestion()
-                            userInput = ""
-                        }
+                    userInput = questionViewModel.currentQuestion.answer
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        questionViewModel.showNextQuestion()
+                        userInput = ""
                     }
-                }
-                
-                if questionViewModel.showAnswer {
-                    Text(questionViewModel.currentQuestion.answer)
                 }
             }
             

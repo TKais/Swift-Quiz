@@ -21,7 +21,6 @@ class QuestionViewModel: ObservableObject {
     ]
     
     @Published var currentIndex: Int = 0
-    @Published var showAnswer: Bool = false
     
     // current question
     var currentQuestion: Question {
@@ -29,11 +28,6 @@ class QuestionViewModel: ObservableObject {
     }
     
     func showNextQuestion() {
-        showAnswer = false
         currentIndex = (currentIndex + 1) % questions.count
-    }
-    
-    func toggleAnswer() {
-        showAnswer.toggle()
     }
 }
